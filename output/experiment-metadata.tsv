@@ -1,57 +1,57 @@
-Vendor	Batch	Plate_Map_Name	Assay_Plate_Barcode	Binning	Magnification	Number_of_channels	Images_per_well	z_plane	BF_Zplanes	Anomaly
-MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_4site_10XPA	1	10	6	4	1		none
-MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crest	1	10	6	4	1		none
-MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crestz	1	10	6	4	3		none
-MolDev	Scope1_MolDev_20X_4site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_20XPA_Crestz	1	20	6	4	3		none
-MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_9site_20XPA	1	20	6	9	1		none
-MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_9site_20XPA_Crest	1	20	6	9	1		none
-MolDev	Scope1_MolDev_20X_Adaptive	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_Adaptive_20XPA	1	20	6	3	1		none
-Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117060a10x	1	10	4	1	1		none
-Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117061a10x	1	10	4	1	1		none
-Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117062a10x	1	10	4	1	1		none
-Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117063b10x	1	10	4	1	1		none
-Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117061a	1	20	4	9	1		none
-Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117062a	1	20	4	9	1		none
-Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117063b	1	20	4	9	1		none
-PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P1	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P2	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P3	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P4	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P1	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P2	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P3	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P4	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P1	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P2	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P3	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P4	1	20	5	3	1		none
-PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P1	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P2	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P3	1	20	5	3	3		none
-PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P4	1	20	5	3	3		none
-PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP1	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP2	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP3	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP4	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP1	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP2	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP3	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP4	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP1	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP2	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP3	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP4	2	20	5	3	1		none
-PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP1	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP2	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP3	2	20	5	3	3		none
-PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP4	2	20	5	3	3		none
-Yokogawa_Japan	Scope1_Yokogawa_Japan_20X	JUMP-MOA_compound_platemap	20201021T092317	1	20	5	9	10		none
-Yokogawa_Japan	Scope1_Yokogawa_Japan_40X	JUMP-MOA_compound_platemap	20201020T134356	1	40	5	2	12	none	none
-Yokogawa_US	Scope1_Yokogawa_US_10X	JUMP-MOA_compound_platemap	BRO0117014_10x	1	10	6	4	12	10	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117033_20xb	1	20	5	9	1	none	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20x	1	20	5	9	1	none	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20xb	1	20	5	9	12	none	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117033	JUMP-MOA_compound_platemap	BRO0117033_20x	1	20	6	9	12	11	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117059	JUMP-MOA_compound_platemap	BRO0117059_20X	1	20	6	9	12	15	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO01177034	JUMP-MOA_compound_platemap	BRO01177034_20x	1	20	6	9	12	13	none
-Yokogawa_US	Scope1_Yokogawa_US_40X_BRO0117059	JUMP-MOA_compound_platemap	BRO0117059_40x	1	40	6	9	12	15	none
+Vendor	Batch	Plate_Map_Name	Assay_Plate_Barcode	Modality	Binning	Magnification	Number_of_channels	Images_per_well	z_plane	BF_Zplanes	Anomaly
+MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_4site_10XPA	Confocal	1	10	6	4	1		none
+MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crest	Confocal	1	10	6	4	1		none
+MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crestz	Confocal	1	10	6	4	3		none
+MolDev	Scope1_MolDev_20X_4site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_20XPA_Crestz	Confocal	1	20	6	4	3		none
+MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_9site_20XPA	Confocal	1	20	6	9	1		none
+MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_9site_20XPA_Crest	Confocal	1	20	6	9	1		none
+MolDev	Scope1_MolDev_20X_Adaptive	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_Adaptive_20XPA	Confocal	1	20	6	3	1		none
+Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117060a10x	Widefield	1	10	4	1	1		none
+Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117061a10x	Widefield	1	10	4	1	1		none
+Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117062a10x	Widefield	1	10	4	1	1		none
+Nikon	Scope1_Nikon_10X	JUMP-MOA_compound_platemap	BR00117063b10x	Widefield	1	10	4	1	1		none
+Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117061a	Widefield	1	20	4	9	1		none
+Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117062a	Widefield	1	20	4	9	1		none
+Nikon	Scope1_Nikon_20X	JUMP-MOA_compound_platemap	BR00117063b	Widefield	1	20	4	9	1		none
+PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P1	Confocal	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P2	Confocal	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P3	Confocal	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Confocal_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_1Plane_P4	Confocal	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P1	Confocal	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P2	Confocal	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P3	Confocal	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Confocal_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_C_BIN1_P4	Confocal	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P1	Widefield	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P2	Widefield	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P3	Widefield	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Widefield_1Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_1Plane_P4	Widefield	1	20	5	3	1		none
+PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P1	Widefield	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P2	Widefield	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P3	Widefield	1	20	5	3	3		none
+PE	Scope1_PE_Bin1_Widefield_3Plane	JUMP-MOA_compound_platemap	CP_Broad_Phenix_NC_BIN1_P4	Widefield	1	20	5	3	3		none
+PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP1	Confocal	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP2	Confocal	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP3	Confocal	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Confocal_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixC1PlaneP4	Confocal	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP1	Confocal	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP2	Confocal	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP3	Confocal	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Confocal_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixCP4	Confocal	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP1	Widefield	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP2	Widefield	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP3	Widefield	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Widefield_1Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNC1PlaneP4	Widefield	2	20	5	3	1		none
+PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP1	Widefield	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP2	Widefield	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP3	Widefield	2	20	5	3	3		none
+PE	Scope1_PE_Bin2_Widefield_3Plane	JUMP-MOA_compound_platemap	CPBroadPhenixNCP4	Widefield	2	20	5	3	3		none
+Yokogawa_Japan	Scope1_Yokogawa_Japan_20X	JUMP-MOA_compound_platemap	20201021T092317	Confocal	1	20	5	9	10		none
+Yokogawa_Japan	Scope1_Yokogawa_Japan_40X	JUMP-MOA_compound_platemap	20201020T134356	Confocal	1	40	5	2	12	none	none
+Yokogawa_US	Scope1_Yokogawa_US_10X	JUMP-MOA_compound_platemap	BRO0117014_10x	Confocal	1	10	6	4	12	10	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117033_20xb	Confocal	1	20	5	9	1	none	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20x	Confocal	1	20	5	9	1	none	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20xb	Confocal	1	20	5	9	12	none	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117033	JUMP-MOA_compound_platemap	BRO0117033_20x	Confocal	1	20	6	9	12	11	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117059	JUMP-MOA_compound_platemap	BRO0117059_20X	Confocal	1	20	6	9	12	15	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO01177034	JUMP-MOA_compound_platemap	BRO01177034_20x	Confocal	1	20	6	9	12	13	none
+Yokogawa_US	Scope1_Yokogawa_US_40X_BRO0117059	JUMP-MOA_compound_platemap	BRO0117059_40x	Confocal	1	40	6	9	12	15	none
