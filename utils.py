@@ -23,6 +23,50 @@ def load_data(exp, plate, filetype):
     return df
 
 
+def load_data_4FoV(exp, plate, filetype):
+    """load all data from a single experiment into a single dataframe"""
+    path = os.path.join('../jump-scope/profiles_4field_subsample',
+                        f'{exp}',
+                        f'{plate}',
+                        f'*_{filetype}')
+    files = glob.glob(path)
+    df = pd.concat(pd.read_csv(_, low_memory=False) for _ in files)
+    return df
+
+
+def load_data_3FoV(exp, plate, filetype):
+    """load all data from a single experiment into a single dataframe"""
+    path = os.path.join('../jump-scope/profiles_3field_subsample',
+                        f'{exp}',
+                        f'{plate}',
+                        f'*_{filetype}')
+    files = glob.glob(path)
+    df = pd.concat(pd.read_csv(_, low_memory=False) for _ in files)
+    return df
+
+
+def load_data_2FoV(exp, plate, filetype):
+    """load all data from a single experiment into a single dataframe"""
+    path = os.path.join('../jump-scope/profiles_2field_subsample',
+                        f'{exp}',
+                        f'{plate}',
+                        f'*_{filetype}')
+    files = glob.glob(path)
+    df = pd.concat(pd.read_csv(_, low_memory=False) for _ in files)
+    return df
+
+
+def load_data_1FoV(exp, plate, filetype):
+    """load all data from a single experiment into a single dataframe"""
+    path = os.path.join('../jump-scope/profiles_1field_subsample',
+                        f'{exp}',
+                        f'{plate}',
+                        f'*_{filetype}')
+    files = glob.glob(path)
+    df = pd.concat(pd.read_csv(_, low_memory=False) for _ in files)
+    return df
+
+
 def get_metacols(df):
     """return a list of metadata columns"""
     return [c for c in df.columns if c.startswith("Metadata_")]
