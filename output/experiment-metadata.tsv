@@ -1,7 +1,7 @@
 Vendor	Batch	Plate_Map_Name	Assay_Plate_Barcode	Modality	Binning	Magnification	Number_of_channels	Images_per_well	z_plane	BF_Zplanes	Anomaly
 MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_4site_10XPA	Confocal	1	10	6	4	1		none
 MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crest	Confocal	1	10	6	4	1		none
-MolDev	Scope1_MolDev_10X	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crestz	Confocal	1	10	6	4	3		none
+MolDev	Scope1_MolDev_10X_4siteZ	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_10XPA_Crestz	Confocal	1	10	6	4	3		none
 MolDev	Scope1_MolDev_20X_4site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_4site_20XPA_Crestz	Confocal	1	20	6	4	3		none
 MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate2_PCO_6ch_9site_20XPA	Confocal	1	20	6	9	1		none
 MolDev	Scope1_MolDev_20X_9site	JUMP-MOA_compound_platemap	Plate3_PCO_6ch_9site_20XPA_Crest	Confocal	1	20	6	9	1		none
@@ -50,7 +50,7 @@ Yokogawa_Japan	Scope1_Yokogawa_Japan_40X	JUMP-MOA_compound_platemap	20201020T134
 Yokogawa_US	Scope1_Yokogawa_US_10X	JUMP-MOA_compound_platemap	BRO0117014_10x	Confocal	1	10	6	4	12	10	none
 Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117033_20xb	Confocal	1	20	5	9	1	none	none
 Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20x	Confocal	1	20	5	9	1	none	none
-Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch	JUMP-MOA_compound_platemap	BRO0117056_20xb	Confocal	1	20	5	9	12	none	none
+Yokogawa_US	Scope1_Yokogawa_US_20X_5Ch_12Z	JUMP-MOA_compound_platemap	BRO0117056_20xb	Confocal	1	20	5	9	12	none	none
 Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117033	JUMP-MOA_compound_platemap	BRO0117033_20x	Confocal	1	20	6	9	12	11	none
 Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO0117059	JUMP-MOA_compound_platemap	BRO0117059_20X	Confocal	1	20	6	9	12	15	none
 Yokogawa_US	Scope1_Yokogawa_US_20X_6Ch_BRO01177034	JUMP-MOA_compound_platemap	BRO01177034_20x	Confocal	1	20	6	9	12	13	none
