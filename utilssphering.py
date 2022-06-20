@@ -13,6 +13,7 @@ from sklearn.base import TransformerMixin, BaseEstimator
 import kneed
 import matplotlib.pyplot as plt
 import seaborn as sns
+import ast
 
 random.seed(9000)
 
@@ -779,3 +780,14 @@ def enforce_modality_match_order_in_plot(modalitylist):
     master_modalitylist.sort()
     outlist = [f"{modality_dict_reverse[x[0]]} - {modality_dict_reverse[x[1]]}" for x in master_modalitylist]    
     return outlist
+
+def safe_literal_eval(node):
+    """
+    If eval doesn't work, make it a np.nan
+    For JUMP-Scope, this is the only other string
+    found in lists
+    """
+    try:
+        return ast.literal_eval(node)
+    except ValueError:
+        return np.nan 
