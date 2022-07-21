@@ -1,5 +1,6 @@
 #adapted with appreciation from https://github.com/jump-cellpainting/pilot-cpjump1-analysis
 
+from multiprocessing.sharedctypes import Value
 import os
 import random
 import textwrap
@@ -789,5 +790,7 @@ def safe_literal_eval(node):
     """
     try:
         return ast.literal_eval(node)
-    except ValueError:
+    except SyntaxError:
         return np.nan 
+    except ValueError:
+        return np.nan
