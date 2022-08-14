@@ -179,7 +179,6 @@ Yokogawa_US,Scope1_Yokogawa_US_10X,JUMP-MOA_compound_platemap,BRO0117014_10x,Con
 Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch,JUMP-MOA_compound_platemap,BRO0117033_20xb,Confocal,9,,1,20,5,1,none,none,49.0,,1.0,water,no,2.0,9.0
 Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch,JUMP-MOA_compound_platemap,BRO0117056_20x,Confocal,9,,1,20,5,1,none,none,50.0,,1.0,water,no,2.0,9.0
 Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch_12Z,JUMP-MOA_compound_platemap,BRO0117056_20xb,Confocal,9,,1,20,5,12,none,none,51.0,,1.0,water,no,2.0,9.0
-Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO0117033,JUMP-MOA_compound_platemap,BRO0117033_20x,Confocal,9,,1,20,6,12,11,none,52.0,,1.0,water,yes,2.0,9.0
 Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO0117059,JUMP-MOA_compound_platemap,BRO0117059_20X,Confocal,9,,1,20,6,12,15,none,53.0,,1.0,water,yes,4.0,9.0
 Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO01177034,JUMP-MOA_compound_platemap,BRO01177034_20x,Confocal,9,,1,20,6,12,13,none,54.0,,1.0,water,yes,1.0,9.0
 Yokogawa_US,Scope1_Yokogawa_US_40X_BRO0117059,JUMP-MOA_compound_platemap,BRO0117059_40x,Confocal,9,,1,40,6,12,15,none,55.0,,1.0,water,yes,4.0,9.0
