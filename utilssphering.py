@@ -847,21 +847,27 @@ def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, 
                     wspace=0.2,
                     hspace=0.2)
 
-def find_group_avg_df(_df, group):
+def find_group_avg_df(_df, group, **kwargs):
     df = _df.copy()
+    # Define operations to perform on columns during aggregation
+    agg_dict = {
+        'Percent_Replicating' : lambda x: list(x),
+        'Mean_Percent_Replicating' : lambda y: np.mean(y),
+        'SD_Percent_Replicating' : lambda z: float('%.3f'%np.std(z)),
+        'Percent_Matching' : lambda x: list(x),
+        'Mean_Percent_Matching' : lambda y: np.mean(y),
+        'SD_Percent_Matching' : lambda z: float('%.3f'%np.std(z)),
+    }
+    # Make new columns
     df['Mean_Percent_Replicating'] = list(df['Percent_Replicating'])
     df['SD_Percent_Replicating'] = list(df['Percent_Replicating'])
     df['Mean_Percent_Matching'] = list(df['Percent_Matching'])
     df['SD_Percent_Matching'] = list(df['Percent_Matching'])
-    group_df = df.groupby(
-                            group,as_index=False).agg({
-                                'Percent_Replicating' : lambda x: list(x),
-                                'Mean_Percent_Replicating' : lambda y: np.mean(y),
-                                'SD_Percent_Replicating' : lambda z: float('%.3f'%np.std(z)),
-                                'Percent_Matching' : lambda x: list(x),
-                                'Mean_Percent_Matching' : lambda y: np.mean(y),
-                                'SD_Percent_Matching' : lambda z: float('%.3f'%np.std(z)),
-                                # # Can slice out [0] since it should be len==1 since it's the group
-                                # group: lambda x: list(set(x))[0]
-                                })
+    # Implement desired cols and define operations
+    if "col_in_out" in kwargs:
+        for new_col in kwargs["col_in_out"].values():
+            df[new_col[1]] = list(df[new_col[0]])
+            agg_dict.update({new_col[1]: new_col[2]})
+    # Perform aggregation
+    group_df = df.groupby(group,as_index=False).agg(agg_dict)
     return group_df
