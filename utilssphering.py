@@ -794,3 +794,74 @@ def safe_literal_eval(node):
         return np.nan 
     except ValueError:
         return np.nan
+
+def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, legend=False, label=None):
+    cmap = plt.cm.tab10
+    colour_palette = list()
+    for i in range(cmap.N):
+        colour_palette.append(cmap(i))
+    
+    if fig is None and ax_ is None:
+        fig, ax = plt.subplots()
+    else:
+        ax = ax_
+    for i, (group_label, group_df) in enumerate(df.groupby(group)):
+        if error_x is not None or error_y is not None:
+            ax.errorbar(
+                group_df.loc[:, x], 
+                group_df.loc[:, y],
+                xerr=group_df[error_x] if error_x else None,
+                yerr=group_df[error_y] if error_y else None,
+                ecolor=colour_palette[i],
+                # label=group_label,
+                # fmt="None",
+                # zorder=1,
+                lw=2
+            )
+        else:
+            ax.scatter(
+                group_df.loc[:, x],
+                group_df.loc[:, y],
+                color=colour_palette[i], 
+                label=group_label,
+                # zorder=2
+            )
+
+        if legend:
+            ax.legend()
+
+        if label:
+            for col, rows in label.items():
+                for item in rows:
+                    annotate_x = group_df[group_df[col] == item][x].values
+                    annotate_y = group_df[group_df[col] == item][y].values
+                    ax.annotate(item, annotate_x, annotate_y)
+
+    ax.set_title(group, size=15)
+    # ax.set_xscale("log")
+    ax.set_xlabel(x, fontsize=15)
+    ax.set_ylabel(y, fontsize=15)
+    plt.tight_layout()
+    fig.set_facecolor("white")
+    plt.subplots_adjust( 
+                    wspace=0.2,
+                    hspace=0.2)
+
+def find_group_avg_df(_df, group):
+    df = _df.copy()
+    df['Mean_Percent_Replicating'] = list(df['Percent_Replicating'])
+    df['SD_Percent_Replicating'] = list(df['Percent_Replicating'])
+    df['Mean_Percent_Matching'] = list(df['Percent_Matching'])
+    df['SD_Percent_Matching'] = list(df['Percent_Matching'])
+    group_df = df.groupby(
+                            group,as_index=False).agg({
+                                'Percent_Replicating' : lambda x: list(x),
+                                'Mean_Percent_Replicating' : lambda y: np.mean(y),
+                                'SD_Percent_Replicating' : lambda z: float('%.3f'%np.std(z)),
+                                'Percent_Matching' : lambda x: list(x),
+                                'Mean_Percent_Matching' : lambda y: np.mean(y),
+                                'SD_Percent_Matching' : lambda z: float('%.3f'%np.std(z)),
+                                # # Can slice out [0] since it should be len==1 since it's the group
+                                # group: lambda x: list(set(x))[0]
+                                })
+    return group_df
