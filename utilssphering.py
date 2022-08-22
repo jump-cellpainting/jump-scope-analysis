@@ -864,9 +864,10 @@ def find_group_avg_df(_df, group, **kwargs):
     df['Mean_Percent_Matching'] = list(df['Percent_Matching'])
     df['SD_Percent_Matching'] = list(df['Percent_Matching'])
     # Implement desired cols and define operations
-    if "col_in_out" in kwargs:
-        for new_col in kwargs["col_in_out"].values():
+    if "add_cols" in kwargs:
+        for new_col in kwargs["add_cols"].values():
             df[new_col[1]] = list(df[new_col[0]])
+            # new_col[2] is the function to apply
             agg_dict.update({new_col[1]: new_col[2]})
     # Perform aggregation
     group_df = df.groupby(group,as_index=False).agg(agg_dict)
