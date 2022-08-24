@@ -8,12 +8,15 @@ import itertools
 import pycytominer
 import matplotlib.pyplot as plt
 import ast
+import logging
+logging.basicConfig(filename="./log")
 
 random.seed(9000)
 
 # Read new experiment df
-
 experiment_df = pd.read_csv("output/all-profile-metadata.csv")
+# Add profile path
+profile_path = "/home/ubuntu/ebs_tmp/jump-scope/profiles"
 
 def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Batch", match_or_rep_or_both="replicating", enable_sphering="both"):
     """
@@ -95,9 +98,8 @@ def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Bat
                                                                     'Percent_Matching':prop_95_matching,
                                                                     'Value_95':value_95_matching,
                                                                     'sphering': sphere_bool}, index=[ind]))
-                except:
-                    print(f"Passed: {data_path}")
-                    pass
+                except Exception as e:
+                    logging.error(f"Passed: {data_path}", exc_info=e)
     # Concatenate the data
     if match_or_rep_or_both.casefold() == "replicating" or match_or_rep_or_both.casefold() == "both":
         corr_replicating_df = pd.concat(corr_replicating_list, ignore_index=True)
@@ -115,11 +117,7 @@ def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Bat
     elif match_or_rep_or_both.casefold() == "matching":
         return experiment_metadata.merge(corr_matching_df, how="inner", on=merge_columns)
 
-profile_path = "/home/ubuntu/ebs_tmp/jump-scope/profiles"
 df_replicating, df_matching = create_moa_dataframe(experiment_df, profile_path, match_or_rep_or_both="both", enable_sphering="both")
-# df = create_moa_dataframe(pd.read_csv('output/experiment-metadata.tsv', sep='\t'), "../jump-scope/profiles/", match_or_rep_or_both="replicating", enable_sphering="no")
-
-# df
 
 def add_total_cell_counts(df, profile_path):
     out_df = df.copy()
@@ -140,18 +138,8 @@ def add_total_cell_counts(df, profile_path):
 df_replicating = add_total_cell_counts(df_replicating, profile_path)
 df_matching = add_total_cell_counts(df_matching, profile_path)
 
-# Merge sites and subsample columns
-df_replicating.loc[df_replicating["Sites-SubSampled"].isnull(), "Sites-SubSampled"] = df_replicating["Images_per_well"]
-df_replicating["Sites-SubSampled"] = pd.to_numeric(df_replicating["Sites-SubSampled"], downcast="integer")
-
-df_matching.loc[df_replicating["Sites-SubSampled"].isnull(), "Sites-SubSampled"] = df_matching["Images_per_well"]
-df_matching["Sites-SubSampled"] = pd.to_numeric(df_matching["Sites-SubSampled"], downcast="integer")
-
 ## Checkpoint save
-
 if not os.path.isdir("checkpoints"):
     os.mkdir("checkpoints")
-
-df_replicating.to_csv("checkpoints/moa-replicating-sphering_NEW_PROFILES.csv", index_label='index', index=False)
-
-df_matching.to_csv("checkpoints/moa-matching-sphering_NEW_PROFILES.csv", index_label='index', index=False)
+df_replicating.to_csv("checkpoints/moa-replicating.csv", index_label='index', index=False)
+df_matching.to_csv("checkpoints/moa-matching.csv", index_label='index', index=False)
