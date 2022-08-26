@@ -1,0 +1,45 @@
+ERROR:root:Passed: /home/ubuntu/jump-scope/jump-scope/profiles-with-image-features/Scope1_Nikon_10X/BR00117062a10x/BR00117062a10x_normalized_feature_select_negcon_batch.csv.gz
+Traceback (most recent call last):
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/script-run-img-features.py", line 49, in create_moa_dataframe
+    replicate_corr_sphere, null_replicating_sphere, prop_95_replicating_sphere, value_95_replicating_sphere = utilssphering.calculate_percent_replicating_MOA("", "", data_df=load_data)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 413, in calculate_percent_replicating_MOA
+    data_df = sphere_plate_zca_corr(data_df)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 390, in sphere_plate_zca_corr
+    sphereer.fit(dmso_vals)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 346, in fit
+    X = check_array(X, accept_sparse=False, copy=self.copy, ensure_2d=True)
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+ERROR:root:Passed: /home/ubuntu/jump-scope/jump-scope/profiles-with-image-features/Scope1_PE_Bin2_Widefield_3Plane/CPBroadPhenixNCP1/CPBroadPhenixNCP1_normalized_feature_select_negcon_batch.csv.gz
+Traceback (most recent call last):
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/script-run-img-features.py", line 49, in create_moa_dataframe
+    replicate_corr_sphere, null_replicating_sphere, prop_95_replicating_sphere, value_95_replicating_sphere = utilssphering.calculate_percent_replicating_MOA("", "", data_df=load_data)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 413, in calculate_percent_replicating_MOA
+    data_df = sphere_plate_zca_corr(data_df)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 390, in sphere_plate_zca_corr
+    sphereer.fit(dmso_vals)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 346, in fit
+    X = check_array(X, accept_sparse=False, copy=self.copy, ensure_2d=True)
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+ERROR:root:Passed: /home/ubuntu/jump-scope/jump-scope/profiles-with-image-features/1siteSubSample_Scope1_Yokogawa_US_40X_BRO0117059/BRO0117059_40x/BRO0117059_40x_normalized_feature_select_negcon_batch.csv.gz
+Traceback (most recent call last):
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/script-run-img-features.py", line 49, in create_moa_dataframe
+    replicate_corr_sphere, null_replicating_sphere, prop_95_replicating_sphere, value_95_replicating_sphere = utilssphering.calculate_percent_replicating_MOA("", "", data_df=load_data)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 413, in calculate_percent_replicating_MOA
+    data_df = sphere_plate_zca_corr(data_df)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 390, in sphere_plate_zca_corr
+    sphereer.fit(dmso_vals)
+  File "/home/ubuntu/jump-scope/jump-scope-analysis/utilssphering.py", line 346, in fit
+    X = check_array(X, accept_sparse=False, copy=self.copy, ensure_2d=True)
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "/home/ubuntu/miniconda/envs/jump-scope/lib/python3.8/site-packages/sklearn/utils/validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
