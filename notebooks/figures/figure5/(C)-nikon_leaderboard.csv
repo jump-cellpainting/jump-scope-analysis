@@ -1,0 +1,15 @@
+Percent_Score,Vendor,Modality,Binning,Magnification,aperture,Number_of_channels,z_plane,dry-immersion,Percent_Score,channel_names,sites
+100.0,Nikon,Widefield,1,20,0.75,4,1,dry,100.0,"AGP, DNA, ER, Mito",9
+93.4,Nikon,Widefield,1,20,0.75,4,1,dry,93.4,"AGP, DNA, ER, Mito",9
+89.2,Nikon,Widefield,1,20,0.75,4,1,dry,89.2,"AGP, DNA, ER, Mito",9
+81.6,Nikon,Widefield,1,20,0.75,4,1,dry,81.6,"AGP, DNA, ER, Mito",9
+76.9,Nikon,Widefield,1,10,0.45,4,1,dry,76.9,"AGP, DNA, ER, Mito",1
+76.4,Nikon,Widefield,1,20,0.75,4,1,dry,76.4,"AGP, DNA, ER, Mito",9
+71.0,Nikon,Widefield,1,20,0.75,4,1,dry,71.0,"AGP, DNA, ER, Mito",9
+68.0,Nikon,Widefield,1,10,0.45,4,1,dry,68.0,"AGP, DNA, ER, Mito",1
+64.5,Nikon,Widefield,1,10,0.45,4,1,dry,64.5,"AGP, DNA, ER, Mito",1
+63.7,Nikon,Widefield,1,10,0.45,4,1,dry,63.7,"AGP, DNA, ER, Mito",1
+60.5,Nikon,Widefield,1,10,0.45,4,1,dry,60.5,"AGP, DNA, ER, Mito",1
+52.8,Nikon,Widefield,1,10,0.45,4,1,dry,52.8,"AGP, DNA, ER, Mito",1
+49.4,Nikon,Widefield,1,10,0.45,4,1,dry,49.4,"AGP, DNA, ER, Mito",1
+47.4,Nikon,Widefield,1,10,0.45,4,1,dry,47.4,"AGP, DNA, ER, Mito",1

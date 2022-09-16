@@ -1,0 +1,19 @@
+Percent_Score,Vendor,Modality,Binning,Magnification,aperture,Number_of_channels,simultaneous-excitation,z_plane,dry-immersion,Percent_Score,channel_names,sites
+100.0,Yokogawa_US,Confocal,1,20,1.0,5,2.0,12,water,100.0,"AGP, DNA, ER, Mito, RNA",9
+97.5,Yokogawa_Japan,Confocal,1,20,0.75,5,,10,dry,97.5,"AGP, DNA, ER, Mito, RNA",9
+96.4,Yokogawa_US,Confocal,1,20,1.0,5,2.0,1,water,96.4,"AGP, DNA, ER, Mito, RNA",9
+93.8,Yokogawa_US,Confocal,1,20,1.0,6,4.0,12,water,93.8,"AGP, BrightField, DNA, ER, Mito, RNA",9
+93.6,Yokogawa_US,Confocal,1,20,1.0,5,2.0,1,water,93.6,"AGP, DNA, ER, Mito, RNA",9
+88.9,Yokogawa_US,Confocal,1,10,0.4,6,,12,dry,88.9,"AGP, BrightField, DNA, ER, Mito, RNA",4
+87.6,Yokogawa_US,Confocal,1,20,1.0,5,2.0,12,water,87.6,"AGP, DNA, ER, Mito, RNA",9
+86.3,Yokogawa_US,Confocal,1,20,1.0,6,4.0,12,water,86.3,"AGP, BrightField, DNA, ER, Mito, RNA",9
+86.2,Yokogawa_US,Confocal,1,20,1.0,6,1.0,12,water,86.2,"AGP, BrightField, DNA, ER, Mito, RNA",9
+83.8,Yokogawa_US,Confocal,1,20,1.0,6,1.0,12,water,83.8,"AGP, BrightField, DNA, ER, Mito, RNA",9
+81.2,Yokogawa_US,Confocal,1,40,1.0,6,4.0,12,water,81.2,"AGP, BrightField, DNA, ER, Mito, RNA",9
+81.1,Yokogawa_US,Confocal,1,20,1.0,5,2.0,1,water,81.1,"AGP, DNA, ER, Mito, RNA",9
+80.0,Yokogawa_Japan,Confocal,1,20,0.75,5,,10,dry,80.0,"AGP, DNA, ER, Mito, RNA",9
+76.3,Yokogawa_US,Confocal,1,20,1.0,5,2.0,1,water,76.3,"AGP, DNA, ER, Mito, RNA",9
+75.1,Yokogawa_Japan,Confocal,1,40,0.95,5,,12,dry,75.1,"AGP, DNA, ER, Mito, RNA",2
+73.8,Yokogawa_US,Confocal,1,10,0.4,6,,12,dry,73.8,"AGP, BrightField, DNA, ER, Mito, RNA",4
+66.2,Yokogawa_US,Confocal,1,40,1.0,6,4.0,12,water,66.2,"AGP, BrightField, DNA, ER, Mito, RNA",9
+60.1,Yokogawa_Japan,Confocal,1,40,0.95,5,,12,dry,60.1,"AGP, DNA, ER, Mito, RNA",2

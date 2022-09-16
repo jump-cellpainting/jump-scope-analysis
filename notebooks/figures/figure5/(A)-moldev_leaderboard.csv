@@ -1,0 +1,13 @@
+Percent_Score,Vendor,Modality,Binning,Magnification,aperture,Number_of_channels,z_plane,spinning-disc,channel_names,sites
+100.0,MolDev,Confocal,1,20,0.75,6,1,no,"Actin, DNA, ER, Golgi, Mito, RNA",9
+98.7,MolDev,Confocal,1,10,0.45,6,3,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+91.2,MolDev,Confocal,1,10,0.45,6,1,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+90.0,MolDev,Confocal,1,20,0.75,6,1,yes,"Actin, DNA, ER, Golgi, Mito, RNA",9
+86.4,MolDev,Confocal,1,10,0.45,6,1,no,"Actin, DNA, ER, Golgi, Mito, RNA",4
+83.8,MolDev,Confocal,1,20,0.75,6,3,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+83.8,MolDev,Confocal,1,20,0.75,6,1,no,"Actin, DNA, ER, Golgi, Mito, RNA",9
+80.3,MolDev,Confocal,1,10,0.45,6,3,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+70.3,MolDev,Confocal,1,10,0.45,6,1,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+70.2,MolDev,Confocal,1,20,0.75,6,1,yes,"Actin, DNA, ER, Golgi, Mito, RNA",9
+65.4,MolDev,Confocal,1,20,0.75,6,3,yes,"Actin, DNA, ER, Golgi, Mito, RNA",4
+56.9,MolDev,Confocal,1,10,0.45,6,1,no,"Actin, DNA, ER, Golgi, Mito, RNA",4
