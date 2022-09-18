@@ -39,7 +39,7 @@ def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Bat
             batch_data = vendor_data.loc[vendor_data[batch_col] == a_batch]
             for a_plate in batch_data["Assay_Plate_Barcode"].unique():
                 # plate_data = batch_data.loc[batch_data["Assay_Plate_Barcode"] == a_plate]
-                data_path = os.path.join(profile_parent_dir, a_batch, a_plate, a_plate+"_normalized_feature_select_negcon_batch.csv.gz")
+                data_path = os.path.join(profile_parent_dir, a_batch, a_plate, a_plate+"_normalized_feature_select_negcon_plate.csv.gz")
                 load_data = pd.read_csv(data_path)
                 print(f"Processing: {a_vendor}/{a_batch}/{a_plate}")
                 try:
