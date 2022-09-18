@@ -795,7 +795,7 @@ def safe_literal_eval(node):
     except ValueError:
         return np.nan
 
-def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, legend=False, label=None):
+def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, legend=False, label=None, alpha=None):
     cmap = plt.cm.tab10
     colour_palette = list()
     for i in range(cmap.N):
@@ -824,6 +824,7 @@ def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, 
                 group_df.loc[:, y],
                 color=colour_palette[i], 
                 label=group_label,
+                alpha=alpha,
                 # zorder=2
             )
 
