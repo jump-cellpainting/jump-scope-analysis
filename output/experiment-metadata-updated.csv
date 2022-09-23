@@ -47,11 +47,11 @@
 45,PE,Scope1_PE_Bin2_Widefield_3Plane,JUMP-MOA_compound_platemap,CPBroadPhenixNCP4,Widefield,,2,20,1.0,water,,,5,3,3,,none
 46,Yokogawa_Japan,Scope1_Yokogawa_Japan_20X,JUMP-MOA_compound_platemap,20201021T092317,Confocal,,1,20,0.75,dry,,,5,9,10,,none
 47,Yokogawa_Japan,Scope1_Yokogawa_Japan_40X,JUMP-MOA_compound_platemap,20201020T134356,Confocal,,1,40,0.95,dry,no,,5,2,12,,none
-48,Yokogawa_US,Scope1_Yokogawa_US_10X,JUMP-MOA_compound_platemap,BRO0117014_10x,Confocal,,1,10,0.4,dry,yes,,6,4,12,10,none
+48,Yokogawa_US,Scope1_Yokogawa_US_10X,JUMP-MOA_compound_platemap,BRO0117014_10x,Confocal,,1,10,0.4,dry,yes,2,6,4,12,10,none
 49,Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch,JUMP-MOA_compound_platemap,BRO0117033_20xb,Confocal,,1,20,1.0,water,no,2.0,5,9,1,none,none
 50,Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch,JUMP-MOA_compound_platemap,BRO0117056_20x,Confocal,,1,20,1.0,water,no,2.0,5,9,1,none,none
 51,Yokogawa_US,Scope1_Yokogawa_US_20X_5Ch_12Z,JUMP-MOA_compound_platemap,BRO0117056_20xb,Confocal,,1,20,1.0,water,no,2.0,5,9,12,none,none
 52,Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO0117033,JUMP-MOA_compound_platemap,BRO0117033_20x,Confocal,,1,20,1.0,water,yes,2.0,6,9,12,11,none
 53,Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO0117059,JUMP-MOA_compound_platemap,BRO0117059_20X,Confocal,,1,20,1.0,water,yes,4.0,6,9,12,15,none
-54,Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO01177034,JUMP-MOA_compound_platemap,BRO01177034_20x,Confocal,,1,20,1.0,water,yes,1.0,6,9,12,13,none
+54,Yokogawa_US,Scope1_Yokogawa_US_20X_6Ch_BRO01177034,JUMP-MOA_compound_platemap,BRO01177034_20x,Confocal,,1,20,1.0,water,yes,4,6,9,12,13,none
 55,Yokogawa_US,Scope1_Yokogawa_US_40X_BRO0117059,JUMP-MOA_compound_platemap,BRO0117059_40x,Confocal,,1,40,1.0,water,yes,4.0,6,9,12,15,none
