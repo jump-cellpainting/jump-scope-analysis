@@ -1,0 +1,11 @@
+Simultaneous Excitation,2,4
+Cells_Correlation_Correlation_DNA_ER,0.16108,0.58607
+Cells_Correlation_Correlation_DNA_Mito,0.29464,0.28336
+Cells_Correlation_Correlation_DNA_RNA,0.21362,0.23826
+Cells_Correlation_Correlation_ER_Mito,0.76722,0.63593
+Cells_Correlation_Correlation_ER_RNA,0.90527,0.66225
+Cells_Correlation_Correlation_Mito_RNA,0.76321,0.68153
+Cells_Correlation_Correlation_AGP_DNA,0.41234,0.49744
+Cells_Correlation_Correlation_AGP_ER,0.7415,0.6723
+Cells_Correlation_Correlation_AGP_Mito,0.67592,0.5841
+Cells_Correlation_Correlation_AGP_RNA,0.76547,0.59883
