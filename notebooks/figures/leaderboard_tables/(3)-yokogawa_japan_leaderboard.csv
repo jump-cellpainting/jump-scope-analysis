@@ -1,3 +1,3 @@
-Place,Modality,Binning,Magnification,NA,Number Of Channels,Simultaneous Excitation,Z Planes,Immersion,Sites
-1,Confocal,1,20,0.75,5,,10,dry,9
-2,Confocal,1,40,0.95,5,,12,dry,2
+Place,Modality,Binning,Magnification,NA,Number Of Channels,Z Planes,Immersion,Sites
+1,Confocal,1,20,0.75,5,10,dry,9
+2,Confocal,1,40,0.95,5,12,dry,2
