@@ -1,7 +1,7 @@
-Vendor,Batch,Plate_Map_Name,Assay_Plate_Barcode,Modality,Images_per_well,Sites-SubSampled,Binning,Magnification,Number_of_channels,z_plane,BF_Zplanes,spinning-disc,aperture,dry-immersion,vs-brightfield,simultaneous-excitation,sites,Size_MB,Size_MB_std,sphering,value_95_replicating,Percent_Replicating,channel_names,brightfield_z_plane_used,feature_channels_found,Percent_Matching,value_95_matching,cell_count
-MolDev,Scope1_MolDev_10X,JUMP-MOA_compound_platemap,Plate2_PCO_6ch_4site_10XPA,Confocal,4,,1,10,6,1,,no,0.45,dry,,,4,52.47633350846427,0.0001442278122525,True,0.191908312001702,60.0,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",23.25581395348837,0.2880989365375671,2014937
-MolDev,Scope1_MolDev_10X,JUMP-MOA_compound_platemap,Plate3_PCO_6ch_4site_10XPA_Crest,Confocal,4,,1,10,6,1,,yes,0.45,dry,,,4,52.47651426861264,0.0001832662332974,True,0.2696170489826298,62.22222222222222,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",18.6046511627907,0.3982492579824912,2413350
-MolDev,Scope1_MolDev_10X_4siteZ,JUMP-MOA_compound_platemap,Plate3_PCO_6ch_4site_10XPA_Crestz,Confocal,4,,1,10,6,3,,yes,0.45,dry,,,4,52.47663138845419,0.0001418825539195,True,0.2051206257553893,66.66666666666666,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",23.25581395348837,0.3631136379995683,2381443
-MolDev,Scope1_MolDev_20X_4site,JUMP-MOA_compound_platemap,Plate3_PCO_6ch_4site_20XPA_Crestz,Confocal,4,,1,20,6,3,,yes,0.75,dry,,,4,52.476629335720496,0.0001144565992287,True,0.1826299647614568,57.77777777777777,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",18.6046511627907,0.2791783053669571,527841
-MolDev,Scope1_MolDev_20X_9site,JUMP-MOA_compound_platemap,Plate2_PCO_6ch_9site_20XPA,Confocal,9,,1,20,6,1,,no,0.75,dry,,,9,52.47633408863811,0.0001533901215815,True,0.1842051079992724,67.77777777777779,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",23.25581395348837,0.2911271351345924,1101611
-MolDev,Scope1_MolDev_20X_9site,JUMP-MOA_compound_platemap,Plate3_PCO_6ch_9site_20XPA_Crest,Confocal,9,,1,20,6,1,,yes,0.75,dry,,,9,52.476410701871146,0.0001143807788651,True,0.321652739812125,58.88888888888889,"Actin, DNA, ER, Golgi, Mito, RNA",,"Actin, DNA, ER, Golgi, Mito, RNA",20.930232558139537,0.4607559891620507,1253387
+Place,Modality,Binning,Magnification,NA,Number Of Channels,Z Planes,Spinning Disc,Sites
+1,Confocal,1,20,0.75,6,1,no,9
+2,Confocal,1,10,0.45,6,3,yes,4
+3,Confocal,1,10,0.45,6,1,no,4
+4,Confocal,1,10,0.45,6,1,yes,4
+5,Confocal,1,20,0.75,6,1,yes,9
+6,Confocal,1,20,0.75,6,3,yes,4
