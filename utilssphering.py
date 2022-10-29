@@ -795,7 +795,25 @@ def safe_literal_eval(node):
     except ValueError:
         return np.nan
 
-def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, legend=False, label=None, alpha=None):
+def group_plot(
+    df, 
+    x, 
+    y, 
+    group, 
+    error_x=None,
+    error_y=None, 
+    fig=None, 
+    ax_=None, 
+    legend=False, 
+    legend_location=None,
+    label=None, 
+    alpha=None,
+    x_lim=None,
+    y_lim=None,
+    plot_title=None,
+    xlabel=None,
+    ylabel=None
+    ):
     cmap = plt.cm.tab10
     colour_palette = list()
     for i in range(cmap.N):
@@ -827,9 +845,15 @@ def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, 
                 alpha=alpha,
                 # zorder=2
             )
+        
+        if x_lim:
+            ax.set_xlim(x_lim)
+
+        if y_lim:
+            ax.set_ylim(y_lim)
 
         if legend:
-            ax.legend()
+            ax.legend(loc=legend_location if legend_location else None)
 
         if label:
             for col, rows in label.items():
@@ -838,10 +862,10 @@ def group_plot(df, x, y, group, error_x=None, error_y=None, fig=None, ax_=None, 
                     annotate_y = group_df[group_df[col] == item][y].values
                     ax.annotate(item, annotate_x, annotate_y)
 
-    ax.set_title(group, size=15)
-    # ax.set_xscale("log")
-    ax.set_xlabel(x, fontsize=15)
-    ax.set_ylabel(y, fontsize=15)
+
+    ax.set_title(group if not plot_title else plot_title, size=15)
+    ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
+    ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
     plt.tight_layout()
     fig.set_facecolor("white")
     plt.subplots_adjust( 
