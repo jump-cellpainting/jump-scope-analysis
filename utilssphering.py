@@ -806,6 +806,9 @@ def group_plot(
     ax_=None, 
     legend=False, 
     legend_location=None,
+    infer_custom_legend=False,
+    s=None,
+    use_markers=False,
     label=None, 
     alpha=None,
     x_lim=None,
@@ -816,6 +819,7 @@ def group_plot(
     ):
     cmap = plt.cm.tab10
     colour_palette = list()
+    markers = "sxo^D2"
     for i in range(cmap.N):
         colour_palette.append(cmap(i))
     
@@ -824,6 +828,18 @@ def group_plot(
     else:
         ax = ax_
     for i, (group_label, group_df) in enumerate(df.groupby(group)):
+        if infer_custom_legend:
+            if len(group_df) > 1:
+                raise ValueError("Cannot infer custom legend from grouped DF of more than 1")
+            # Columns to drop that are not to be used for paired comparison
+            infer_legend = df.apply(pd.Series.duplicated).any().drop([
+                "Batch", 
+                "Assay_Plate_Barcode", 
+                "Percent_Replicating", 
+                "Percent_Matching", 
+                "euclidean_distance", 
+                "cell_count"])
+            infer_legend = infer_legend[~infer_legend].index
         if error_x is not None or error_y is not None:
             ax.errorbar(
                 group_df.loc[:, x], 
@@ -841,8 +857,12 @@ def group_plot(
                 group_df.loc[:, x],
                 group_df.loc[:, y],
                 color=colour_palette[i], 
-                label=group_label,
+                # We use .iloc[0] here becasue we assume that every group has a len(df) of 1
+                # Labels cannot be resolved for groups larger than 1
+                label=group_label if not infer_custom_legend else group_df[infer_legend].iloc[0].to_dict(),
                 alpha=alpha,
+                marker=markers[i] if use_markers else None,
+                s=s
                 # zorder=2
             )
         
