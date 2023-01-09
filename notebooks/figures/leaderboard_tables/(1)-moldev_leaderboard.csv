@@ -1,7 +1,7 @@
-Place,Modality,Binning,Magnification,NA,Number Of Channels,Z Planes,Spinning Disc,Sites
-1,Confocal,1,20,0.75,6,1,no,9
-2,Confocal,1,10,0.45,6,3,yes,4
-3,Confocal,1,10,0.45,6,1,no,4
-4,Confocal,1,10,0.45,6,1,yes,4
-5,Confocal,1,20,0.75,6,1,yes,9
-6,Confocal,1,20,0.75,6,3,yes,4
+Place,Modality,Binning,Magnification,NA,Number Of Channels,Z Planes,Spinning Disc,Sites,Percent Score
+1,Confocal,1,20,0.75,6,1,no,9,100.0
+2,Confocal,1,10,0.45,6,3,yes,4,98.8
+3,Confocal,1,10,0.45,6,1,no,4,91.5
+4,Confocal,1,10,0.45,6,1,yes,4,88.8
+5,Confocal,1,20,0.75,6,1,yes,9,87.7
+6,Confocal,1,20,0.75,6,3,yes,4,83.9
