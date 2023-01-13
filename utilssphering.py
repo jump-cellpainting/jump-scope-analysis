@@ -917,3 +917,94 @@ def find_group_avg_df(_df, group, **kwargs):
     # Perform aggregation
     group_df = df.groupby(group,as_index=False).agg(agg_dict)
     return group_df
+
+def profile_finder(df, profile_path, profile_type):
+    """Returns a list of DataFrames from the provided df"""
+    # Store profile types
+    type_dict = {
+        "unnormalized": ".csv.gz",
+        "norm_feature_selected": "_normalized_feature_select_negcon_plate.csv.gz"
+        }
+    
+    # Select desired profile type
+    suffix = type_dict[profile_type]
+
+    output = list()
+
+    for ind, row in df.iterrows():
+        df_path = os.path.join(profile_path, row["Batch"], row["Assay_Plate_Barcode"], f"{row['Assay_Plate_Barcode']}{suffix}")
+        print(f"loading...{df_path}")
+        output.append(pd.read_csv(df_path))
+    
+    return output
+
+def compare_correlations(
+    df: pd.DataFrame, 
+    profile_path: str, 
+    plates: list, 
+    correlation_metric: str, 
+    grouping_metric: str,
+    fig=None,
+    ax=None,
+    plot_type="violin",
+    plot_title=None,
+    xlabel=None,
+    ylabel=None,
+    ):
+    """
+    Between two profiles, return a dataframe that contains only the desired feature
+    """
+    assert len(plates) == 2, f"Can only compare 2 plates at a time, not {len(plates)}"
+    # Load requested profiles
+    profiles = profile_finder(df, profile_path, "unnormalized")
+    # Keep only the correlation columns
+    for i, i_df in enumerate(profiles):
+        mask_cols = [] # Store the columns to mask, find for each profile independently
+        for cols in i_df.columns:
+            if correlation_metric in cols and "BrightField" not in cols:
+                mask_cols.append(cols)
+        # Mask columns
+        profiles[i] = i_df[mask_cols]
+
+    # For the grouping metric, find the unique values
+    group_values = df[grouping_metric].unique()
+
+    # Add grouping column based on index. Assumes profile iterations will be in order
+    for i in range(len(profiles)):
+        profiles[i].loc[:,grouping_metric] = group_values[i]
+
+    profiles = pd.concat(profiles)
+
+    profiles = profiles.melt(id_vars=grouping_metric)
+
+    fig.set_facecolor("white")
+
+    if plot_type.casefold() == "violin":
+        seaborn.violinplot(
+            ax=ax,
+            data=profiles,
+            y="variable",
+            x="value",
+            orient="h",
+            hue=grouping_metric,
+            split=True,
+            cut=0, 
+            figsize=(20, 10),
+            )
+
+    elif plot_type.casefold() == "boxen":
+        seaborn.boxenplot(
+            ax=ax,
+            data=profiles,
+            y="variable",
+            x="value",
+            orient="h",
+            showfliers=False
+            )
+    else:
+        raise NotImplementedError
+
+    ax.set_title(None if not plot_title else plot_title, size=15)
+    ax.set_xlabel(None if not xlabel else xlabel, fontsize=15)
+    ax.set_ylabel(None if not ylabel else ylabel, fontsize=15)
+    plt.tight_layout()
