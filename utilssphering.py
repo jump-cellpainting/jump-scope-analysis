@@ -13,7 +13,7 @@ from sklearn.utils import check_array, as_float_array
 from sklearn.base import TransformerMixin, BaseEstimator
 import kneed
 import matplotlib.pyplot as plt
-import seaborn as sns
+import seaborn
 import ast
 
 random.seed(9000)
@@ -938,15 +938,13 @@ def profile_finder(df, profile_path, profile_type):
     
     return output
 
-def compare_correlations(
+def compare_paired_correlations(
     df: pd.DataFrame, 
-    profile_path: str, 
-    plates: list, 
+    profile_path: str,  
     correlation_metric: str, 
     grouping_metric: str,
     fig=None,
     ax=None,
-    plot_type="violin",
     plot_title=None,
     xlabel=None,
     ylabel=None,
@@ -954,7 +952,6 @@ def compare_correlations(
     """
     Between two profiles, return a dataframe that contains only the desired feature
     """
-    assert len(plates) == 2, f"Can only compare 2 plates at a time, not {len(plates)}"
     # Load requested profiles
     profiles = profile_finder(df, profile_path, "unnormalized")
     # Keep only the correlation columns
@@ -979,30 +976,63 @@ def compare_correlations(
 
     fig.set_facecolor("white")
 
-    if plot_type.casefold() == "violin":
-        seaborn.violinplot(
-            ax=ax,
-            data=profiles,
-            y="variable",
-            x="value",
-            orient="h",
-            hue=grouping_metric,
-            split=True,
-            cut=0, 
-            figsize=(20, 10),
-            )
+    seaborn.violinplot(
+        ax=ax,
+        data=profiles,
+        y="variable",
+        x="value",
+        orient="h",
+        hue=grouping_metric,
+        split=True,
+        cut=0, 
+        figsize=(20, 10),
+        )
 
-    elif plot_type.casefold() == "boxen":
-        seaborn.boxenplot(
-            ax=ax,
-            data=profiles,
-            y="variable",
-            x="value",
-            orient="h",
-            showfliers=False
-            )
-    else:
-        raise NotImplementedError
+    ax.set_title(None if not plot_title else plot_title, size=15)
+    ax.set_xlabel(None if not xlabel else xlabel, fontsize=15)
+    ax.set_ylabel(None if not ylabel else ylabel, fontsize=15)
+    plt.tight_layout()
+
+
+def compare_single_correlations(
+    df: pd.DataFrame, 
+    profile_path: str, 
+    correlation_metric: str, 
+    fig=None,
+    ax=None,
+    plot_title=None,
+    xlabel=None,
+    ylabel=None,
+    ):
+    """
+    Between two profiles, return a dataframe that contains only the desired feature
+    """
+    # Load requested profiles
+    profiles = profile_finder(df, profile_path, "unnormalized")
+    # Keep only the correlation columns
+    for i, i_df in enumerate(profiles):
+        mask_cols = [] # Store the columns to mask, find for each profile independently
+        for cols in i_df.columns:
+            if correlation_metric in cols and "BrightField" not in cols:
+                mask_cols.append(cols)
+        # Mask columns
+        profiles[i] = i_df[mask_cols]
+
+    profiles = pd.concat(profiles)
+
+    profiles = profiles.melt()
+
+    fig.set_facecolor("white")
+
+    seaborn.boxenplot(
+        ax=ax,
+        data=profiles,
+        y="variable",
+        x="value",
+        orient="h",
+        showfliers=False
+        )
+
 
     ax.set_title(None if not plot_title else plot_title, size=15)
     ax.set_xlabel(None if not xlabel else xlabel, fontsize=15)
