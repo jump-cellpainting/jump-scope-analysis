@@ -930,13 +930,15 @@ def profile_finder(df, profile_path, profile_type):
     suffix = type_dict[profile_type]
 
     output = list()
+    plate_info = list()
 
     for ind, row in df.iterrows():
         df_path = os.path.join(profile_path, row["Batch"], row["Assay_Plate_Barcode"], f"{row['Assay_Plate_Barcode']}{suffix}")
         print(f"loading...{df_path}")
         output.append(pd.read_csv(df_path))
+        plate_info.append({"Batch": row["Batch"], "Assay_Plate_Barcode": row["Assay_Plate_Barcode"]})
     
-    return output
+    return output, plate_info
 
 def compare_paired_correlations(
     df: pd.DataFrame, 
@@ -953,7 +955,9 @@ def compare_paired_correlations(
     Between two profiles, return a dataframe that contains only the desired feature
     """
     # Load requested profiles
-    profiles = profile_finder(df, profile_path, "unnormalized")
+    profiles, plate_info = profile_finder(df, profile_path, "unnormalized")
+    print("!!!", len(profiles))
+
     # Keep only the correlation columns
     for i, i_df in enumerate(profiles):
         mask_cols = [] # Store the columns to mask, find for each profile independently
@@ -963,14 +967,21 @@ def compare_paired_correlations(
         # Mask columns
         profiles[i] = i_df[mask_cols]
 
-    # For the grouping metric, find the unique values
-    group_values = df[grouping_metric].unique()
-
-    # Add grouping column based on index. Assumes profile iterations will be in order
-    for i in range(len(profiles)):
-        profiles[i].loc[:,grouping_metric] = group_values[i]
-
+        unique_value = df[
+            (df["Batch"].str.contains(plate_info[i]["Batch"])) &
+            (df["Assay_Plate_Barcode"].str.contains(plate_info[i]["Assay_Plate_Barcode"]))
+            ][grouping_metric].values
+    
+        profiles[i][grouping_metric] = unique_value[0]
+    
+    print("len_prof", len(profiles))
+    
     profiles = pd.concat(profiles)
+
+    for j in profiles.groupby(grouping_metric):
+        print(j[1].shape[0])
+
+    print(f"Total number of wells: {profiles.shape[0]}")
 
     profiles = profiles.melt(id_vars=grouping_metric)
 
@@ -1008,7 +1019,7 @@ def compare_single_correlations(
     Between two profiles, return a dataframe that contains only the desired feature
     """
     # Load requested profiles
-    profiles = profile_finder(df, profile_path, "unnormalized")
+    profiles, _ = profile_finder(df, profile_path, "unnormalized")
     # Keep only the correlation columns
     for i, i_df in enumerate(profiles):
         mask_cols = [] # Store the columns to mask, find for each profile independently
