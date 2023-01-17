@@ -1038,3 +1038,71 @@ def compare_single_correlations(
     ax.set_xlabel(None if not xlabel else xlabel, fontsize=15)
     ax.set_ylabel(None if not ylabel else ylabel, fontsize=15)
     plt.tight_layout()
+
+def format_column_names(column_name):
+    """
+    For a given string, hyphens and underscores are replaced with spaces and 
+    first letters are capitalised.
+    """
+    return column_name.title().replace("-", " ").replace("_", " ")
+
+def aggregate_duplicates(df, non_group_cols):
+    """
+    Group data on setting columns, calculate the mean for grouped rows
+    (which are therefore duplicates).
+
+    The returned dataframe will not contain Assay_Plate_Barcode, since 
+    the unique barcodes cannot be reconciled into an aggregated mean, 
+    so are therefore dropped.
+    """
+    # Columns to not be used for grouping
+    # non_group_cols = [
+    #     "Assay_Plate_Barcode",
+    #     "Batch",
+    #     "Vendor",
+    #     "value_95_replicating",
+    #     "Percent_Replicating",
+    #     "Size_MB",
+    #     "Size_MB_std",
+    #     "Percent_Matching",
+    #     "value_95_matching",
+    #     "cell_count",
+    #     "Sites-SubSampled",
+    #     "BF_Zplanes", # Ignore since only one BF zplane is used
+    #     "brightfield_z_plane_used",
+    #     # Remove channel names due to some profiles having "AGP" features 
+    #     # and others having "WGPhalloidin" instead
+    #     "feature_channels_found",
+    #     "channel_names"
+    # ]
+    # Find the columns that are not in non_group_cols
+    diff = list(set(df.columns) - set(non_group_cols))
+    # Group df by setting columns, find the mean, then reset the index
+    df = df.groupby(diff, dropna=False, as_index=False).mean()
+    return df
+
+def make_leaderboard(df, columns, non_group_cols, average_duplicates=True):
+    """
+    Process match_rep_df into a nice leaderboard
+    """
+    if average_duplicates:
+        df = aggregate_duplicates(df, non_group_cols)
+
+    # Create an aggregation score for replicating/matching and normalize to the max value
+    df["Percent_Score"] = df[["Percent_Replicating", "Percent_Matching"]].mean(axis=1)
+    df["Percent_Score"] = (df["Percent_Score"] / df["Percent_Score"].max()) * 100
+    df = df.round({"Percent_Score": 1})
+
+    # Sort based on the Percent_Score and then add Place (ie 1st, 2nd, 3rd etc.)
+    df = df.sort_values("Percent_Score", ascending=False)[columns]
+    df["Place"] = df.reset_index(drop=True).index+1
+    
+    # Move place column to first position
+    df.insert(0, "Place", df.pop("Place"))
+
+    # Format column_names
+    df.rename(columns=format_column_names, inplace=True)
+    df.rename(columns={"Z Plane": "Z Planes"}, inplace=True)
+    df.rename(columns={"Aperture": "NA"}, inplace=True)
+    df.rename(columns={"Dry Immersion": "Immersion"}, inplace=True)
+    return df
