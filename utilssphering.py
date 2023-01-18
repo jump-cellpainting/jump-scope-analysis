@@ -956,7 +956,6 @@ def compare_paired_correlations(
     """
     # Load requested profiles
     profiles, plate_info = profile_finder(df, profile_path, "unnormalized")
-    print("!!!", len(profiles))
 
     # Keep only the correlation columns
     for i, i_df in enumerate(profiles):
@@ -973,8 +972,6 @@ def compare_paired_correlations(
             ][grouping_metric].values
     
         profiles[i][grouping_metric] = unique_value[0]
-    
-    print("len_prof", len(profiles))
     
     profiles = pd.concat(profiles)
 
