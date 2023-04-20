@@ -15,10 +15,14 @@ experiment:
       Metadata_pert_iname: Metadata_pert_iname
   add_dummy_metadata_column: TRUE
   split_by_column:
+    split_column: Metadata_moa
+    element_column: Metadata_pert_iname
+    compact_splits: TRUE
   significance_threshold: 0.05
   parallel_workers: 8
   aggregate_by:
     - Metadata_pert_iname
+    - Metadata_pert_type
   filter_by:
   reference_set:
     Metadata_pert_type:
@@ -40,16 +44,21 @@ experiment:
           reference
     all_same_cols_ref:
     all_same_cols_rep:
-      - Metadata_moa
+      - Metadata_moa_split_compact
       - Metadata_reference_or_other # always there
     all_different_cols_rep: NULL
     any_different_cols_rep: NULL
     all_same_cols_rep_ref: NULL
     any_different_cols_non_rep:
-    all_same_cols_non_rep: Metadata_dummy
+      - Metadata_moa_split_compact
+    all_same_cols_non_rep:
+      - Metadata_dummy
     all_different_cols_non_rep:
+      - Metadata_pert_iname
+      - Metadata_moa_split_compact
     all_same_cols_group: NULL
     any_different_cols_group: NULL
     annotation_cols:
+      - Metadata_moa_split_compact
       - Metadata_pert_iname
       - Metadata_reference_or_other
