@@ -934,7 +934,7 @@ def profile_finder(df, profile_path, profile_type):
 
     for ind, row in df.iterrows():
         df_path = os.path.join(profile_path, row["Batch"], row["Assay_Plate_Barcode"], f"{row['Assay_Plate_Barcode']}{suffix}")
-        print(f"loading...{df_path}")
+        print(f"loading: {df_path}")
         output.append(pd.read_csv(df_path))
         plate_info.append({"Batch": row["Batch"], "Assay_Plate_Barcode": row["Assay_Plate_Barcode"]})
     
@@ -978,8 +978,6 @@ def compare_paired_correlations(
     for j in profiles.groupby(grouping_metric):
         print(j[1].shape[0])
 
-    print(f"Total number of wells: {profiles.shape[0]}")
-
     profiles = profiles.melt(id_vars=grouping_metric)
 
     fig.set_facecolor("white")
@@ -994,6 +992,7 @@ def compare_paired_correlations(
         split=True,
         cut=0, 
         figsize=(20, 10),
+        palette="muted"
         )
 
     ax.set_title(None if not plot_title else plot_title, size=15)
