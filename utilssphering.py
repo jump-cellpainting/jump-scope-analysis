@@ -1100,6 +1100,9 @@ def make_leaderboard(df, columns, non_group_cols, average_duplicates=True):
     df["Percent_Score"] = (df["Percent_Score"] / df["Percent_Score"].max()) * 100
     df = df.round({"Percent_Score": 1})
 
+    df = df.round({"Percent_Replicating": 1})
+    df = df.round({"Percent_Matching": 1})
+
     # Sort based on the Percent_Score and then add Place (ie 1st, 2nd, 3rd etc.)
     df = df.sort_values("Percent_Score", ascending=False)[columns]
     df["Place"] = df.reset_index(drop=True).index+1
