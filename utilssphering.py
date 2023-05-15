@@ -805,6 +805,7 @@ def group_plot(
     fig=None, 
     ax_=None, 
     legend=False, 
+    legend_title=None,
     legend_location=None,
     infer_custom_legend=False,
     s=None,
@@ -813,7 +814,7 @@ def group_plot(
     alpha=None,
     x_lim=None,
     y_lim=None,
-    plot_title=None,
+    plot_title=False,
     xlabel=None,
     ylabel=None
     ):
@@ -873,7 +874,7 @@ def group_plot(
             ax.set_ylim(y_lim)
 
         if legend:
-            ax.legend(loc=legend_location if legend_location else None)
+            ax.legend(loc=legend_location if legend_location else None, title=legend_title)
 
         if label:
             for col, rows in label.items():
@@ -882,8 +883,8 @@ def group_plot(
                     annotate_y = group_df[group_df[col] == item][y].values
                     ax.annotate(item, annotate_x, annotate_y)
 
-
-    ax.set_title(group if not plot_title else plot_title, size=15)
+    if plot_title:
+        ax.set_title(group if not plot_title else plot_title, size=15)
     ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
     ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
     plt.tight_layout()
