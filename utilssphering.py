@@ -1117,3 +1117,104 @@ def make_leaderboard(df, columns, non_group_cols, average_duplicates=True):
     df.rename(columns={"Aperture": "NA"}, inplace=True)
     df.rename(columns={"Dry Immersion": "Immersion"}, inplace=True)
     return df
+
+def aggregate_comparison_pvalues(df: pd.DataFrame, remove_cols: list, aggregate_rows: bool, aggregate_similar_features: bool):
+    # Remove columns that are in remove cols and also only keep columns that are pvalues
+    df = df.loc[:, (~df.columns.str.startswith(tuple(remove_cols))) & (df.columns.str.contains("_pvalue"))]
+    # Drop Location, Number, Parent and Neighbour features
+    df = df.loc[:, ~(df.columns.str.contains("|".join(["Location", "Number", "Parent", "Neighbors", "Children"])))]
+    if aggregate_similar_features:
+        compartments = ["Nuclei", "Cytoplasm", "Cells"]
+        result_df = pd.DataFrame()
+
+        for compart in compartments:
+            subset_cols = [col for col in df.columns if compart in col]
+            sub_df = df[subset_cols]
+            # print(sub_df.columns)
+
+            # Find the first 3 words of column names that will be used for grouping
+            group_words = [col.split("_")[:3] for col in subset_cols]
+            # Join them back
+            group_words = ["_".join(w) for w in group_words]
+
+            # Find the mean for the feature groups
+            # result_df = pd.concat([result_df, sub_df.groupby(group_words, axis=1).mean().reset_index()])
+            result_df = result_df.join(sub_df.groupby(group_words, axis=1).mean(), how="right")
+
+        df = result_df
+    # Convert DF to long format
+    if aggregate_rows:
+        df = df.mean(axis=0).to_frame().T.melt(var_name="feature", value_name="pvalue")
+    else:
+        df = df.melt(var_name="feature", value_name="pvalue")
+    df["feature_type"] = df["feature"].str.split("_").str[1]
+    return df
+
+def combine_evalzoo_metrics(match_rep_df: pd.DataFrame, evalzoo_dir: str = "results/results"):
+    # Add Batch and Metadata_Plate since we need to check the presence of a
+    # string in them later, and you can't check them if they don't exist
+    output_df = pd.DataFrame({"Batch": [], "Metadata_Plate": []})
+    for ind, row in match_rep_df.iterrows():
+        # Need to do some check that this row has not already been processed (so
+        # we don't add it twice)
+        if not (row["Batch"] in output_df["Batch"].values and row["Assay_Plate_Barcode"] in output_df["Metadata_Plate"].values):
+            ref_metric_path = os.path.join(evalzoo_dir, row["Batch"]+"_ref", f"metrics_level_1_ref.parquet")
+            non_rep_metric_path = os.path.join(evalzoo_dir, row["Batch"]+"_non_rep", f"metrics_level_1_non_rep.parquet")
+
+            ref_metric_df = pd.read_parquet(ref_metric_path)
+            non_rep_metric_df = pd.read_parquet(non_rep_metric_path)
+
+            # Since we are going to use the metric_type to differentiate between ref
+            # and non_rep, remove this information from the feature names
+            # ref_metric_df = ref_metric_df.rename(lambda x: x + "_ref" if "sim_" in x else x, axis=1)
+            # non_rep_metric_df = non_rep_metric_df.rename(lambda x: x + "_non_rep" if "sim_" in x else x, axis=1)
+
+            ref_metric_df = ref_metric_df.rename(lambda x: x.replace("_ref", "") if "sim_" in x else x, axis=1)
+            non_rep_metric_df = non_rep_metric_df.rename(lambda x: x.replace("_non_rep", "") if "sim_" in x else x, axis=1)
+
+            # Add cols
+            (
+                ref_metric_df["Vendor"], 
+                ref_metric_df["Batch"], 
+                ref_metric_df["Magnification"], 
+                ref_metric_df["Binning"], 
+                ref_metric_df["z_plane"], 
+                ref_metric_df["metric_type"]
+                ) = (
+                row["Vendor"], 
+                row["Batch"], 
+                row["Magnification"], 
+                row["Binning"], 
+                row["z_plane"], 
+                "ref"
+            )
+
+            (
+                non_rep_metric_df["Vendor"], 
+                non_rep_metric_df["Batch"],
+                non_rep_metric_df["Magnification"], 
+                non_rep_metric_df["Binning"], 
+                non_rep_metric_df["z_plane"], 
+                non_rep_metric_df["metric_type"]
+                ) = (
+                row["Vendor"], 
+                row["Batch"], 
+                row["Magnification"], 
+                row["Binning"], 
+                row["z_plane"], 
+                "non_rep"
+                )
+            
+            # Cast some columns to int
+            ref_metric_df["Magnification"] = ref_metric_df["Magnification"].astype("Int64")
+            ref_metric_df["Binning"] = ref_metric_df["Binning"].astype("Int64")
+            ref_metric_df["z_plane"] = ref_metric_df["z_plane"].astype("Int64")
+
+            non_rep_metric_df["Magnification"] = non_rep_metric_df["Magnification"].astype("Int64")
+            non_rep_metric_df["Binning"] = non_rep_metric_df["Binning"].astype("Int64")
+            non_rep_metric_df["z_plane"] = non_rep_metric_df["z_plane"].astype("Int64")
+
+
+            output_df = pd.concat([output_df, ref_metric_df, non_rep_metric_df], axis=0)
+
+    return output_df
