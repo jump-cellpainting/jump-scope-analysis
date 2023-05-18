@@ -1101,6 +1101,9 @@ def make_leaderboard(df, columns, non_group_cols, average_duplicates=True):
     df["Percent_Score"] = (df["Percent_Score"] / df["Percent_Score"].max()) * 100
     df = df.round({"Percent_Score": 1})
 
+    # Adjust % rep/match to that of the max
+    df["Percent_Replicating"] = (df["Percent_Replicating"] / df["Percent_Replicating"].max()) * 100
+    df["Percent_Matching"] = (df["Percent_Matching"] / df["Percent_Matching"].max()) * 100
     df = df.round({"Percent_Replicating": 1})
     df = df.round({"Percent_Matching": 1})
 
