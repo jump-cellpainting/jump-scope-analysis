@@ -15,6 +15,9 @@ import kneed
 import matplotlib.pyplot as plt
 import seaborn
 import ast
+import skimage
+import boto3
+from botocore.handlers import disable_signing
 
 random.seed(9000)
 
@@ -1221,3 +1224,52 @@ def combine_evalzoo_metrics(match_rep_df: pd.DataFrame, evalzoo_dir: str = "resu
             output_df = pd.concat([output_df, ref_metric_df, non_rep_metric_df], axis=0)
 
     return output_df
+
+
+def download_from_cpg(prefix: str, save_dir: str):
+    """Download all images that match the prefix.
+    Prefix must be the complete path to a particular file or 
+    group of files.
+    
+    The prefix, in essence, works like a wildcard search. If a 
+    directory contains file1, file2 and file3 and the prefix is
+    'file', all files will be downloaded. If the prefix is file1, 
+    only file1 will be downloaded."""
+
+    if not os.path.isdir(save_dir):
+        os.makedirs(save_dir)
+
+    s3 = boto3.resource('s3')
+    # The Cell Painting Gallery allows for unsigned requests
+    s3.meta.client.meta.events.register('choose-signer.s3.*', disable_signing)
+    # Define the bucket
+    bucket = s3.Bucket("cellpainting-gallery")
+    for obj in bucket.objects.filter(Prefix=prefix):
+        print(f"Downloading: {obj.key}")
+        s3.Bucket("cellpainting-gallery").download_file(obj.key, os.path.join(save_dir, obj.key.split('/')[-1]))
+
+
+def plot_images(img_paths, crop=None, plot_title=None):
+    ch_names = {
+        1: "Nucleus",
+        2: "Endoplasmic reticulum",
+        3: "Nucleoli, cytoplasmic RNA",
+        4: "Actin, Golgi, plasma membrane",
+        5: "Mitochondria"
+    }
+    fig, ax = plt.subplots(1, len(img_paths), figsize=(20, 5*len(img_paths)))
+    for i, path in enumerate(img_paths):
+        img = skimage.io.imread(path)
+        if crop:
+            img = img[0:crop[0], 0:crop[1]]
+        minq = np.quantile(img, 0.02)
+        maxq = np.quantile(img, 0.98)
+        img = np.clip(img, minq, maxq)
+        ax[i].imshow(img, cmap="gray")
+        title = path[-7:-4]
+        ax[i].set_title(ch_names.get(i+1), fontsize=17)
+        ax[i].axis('off')
+    fig.tight_layout()
+    fig.set_facecolor("white")
+
+    return fig
