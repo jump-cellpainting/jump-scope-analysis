@@ -5,6 +5,7 @@ import os
 import random
 import textwrap
 
+import seaborn as sns
 import pandas as pd
 import numpy as np
 import scipy
@@ -1249,19 +1250,20 @@ def download_from_cpg(prefix: str, save_dir: str):
         s3.Bucket("cellpainting-gallery").download_file(obj.key, os.path.join(save_dir, obj.key.split('/')[-1]))
 
 
-def plot_images(img_paths, crop=None, plot_title=None):
-    ch_names = {
-        1: "Nucleus",
-        2: "Endoplasmic reticulum",
-        3: "Nucleoli, cytoplasmic RNA",
-        4: "Actin, Golgi, plasma membrane",
-        5: "Mitochondria"
-    }
+def plot_images(img_paths: list, crop: tuple = None, x0_y0: tuple = (0, 0), plot_title: str = None, ch_names:dict = None):
+    if ch_names is None:
+        ch_names = {
+            1: "Nucleus",
+            2: "Endoplasmic reticulum",
+            3: "Nucleoli, cytoplasmic RNA",
+            4: "Actin, Golgi, plasma membrane",
+            5: "Mitochondria"
+        }
     fig, ax = plt.subplots(1, len(img_paths), figsize=(20, 5*len(img_paths)))
     for i, path in enumerate(img_paths):
         img = skimage.io.imread(path)
         if crop:
-            img = img[0:crop[0], 0:crop[1]]
+            img = img[x0_y0[1]:crop[1]+x0_y0[1], x0_y0[0]:crop[0]+x0_y0[0]]
         minq = np.quantile(img, 0.02)
         maxq = np.quantile(img, 0.98)
         img = np.clip(img, minq, maxq)
@@ -1269,7 +1271,55 @@ def plot_images(img_paths, crop=None, plot_title=None):
         title = path[-7:-4]
         ax[i].set_title(ch_names.get(i+1), fontsize=17)
         ax[i].axis('off')
+    if plot_title is not None:
+        fig.set_title(plot_title)
     fig.tight_layout()
     fig.set_facecolor("white")
 
     return fig
+
+def plot_two_distributions(
+        df: pd.DataFrame,
+        x: str,
+        y: str,
+        add_stat_annotation: bool = True,
+        xlabel: list = None,
+        ylabel: str = None,
+        plot_title: str = None,
+        ax = None
+):  
+    assert len(df[x].unique()) == 2, f"Can't compare anything other than two distributions. Got {df[x].unique()} for x"
+    group1, group2 = sorted(df[x].unique())
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(5,5))
+        ax.tick_params(labelsize=12)
+    
+    sns.boxenplot(data=df, x=x, y=y, ax=ax)
+    sns.stripplot(data=df, x=x, y=y, ax=ax, color="black")
+
+    if add_stat_annotation:
+        # Define where to draw the stat annotation
+        left_dist, right_dist, y_max, height_addition = 0, 1, df[y].max() + 0.1, 0.1
+
+        _, pval = scipy.stats.ttest_ind(df[df[x]==group1][y].values, df[df[x]==group2][y].values)
+        print(f"The pvalue is: {pval}")
+        significance = "ns" if pval > 0.05 else pval
+
+        # Give some extra room to the annotation
+        ax.set_ylim(0, y_max*1.2)
+
+        # Draw the annotation
+        ax.plot([left_dist, left_dist, right_dist, right_dist], [y_max, y_max+height_addition, y_max+height_addition, y_max], lw=1, c="black")
+        ax.text((left_dist+right_dist)*.5, y_max+height_addition, significance, ha="center", va="bottom", color="black", fontsize=12)
+
+        tstat, pval = scipy.stats.ttest_ind(df[df[x]==group1][y].values, df[df[x]==group2][y].values)
+        print(f"The pvalue is: {pval}")
+
+    ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
+    ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
+    plt.tight_layout()
+    fig.set_facecolor("white")
+    plt.subplots_adjust( 
+                    wspace=0.2,
+                    hspace=0.2)
