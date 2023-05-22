@@ -1286,12 +1286,13 @@ def plot_two_distributions(
         xlabel: list = None,
         ylabel: str = None,
         plot_title: str = None,
-        ax = None
+        ax = None,
+        fig = None
 ):  
     assert len(df[x].unique()) == 2, f"Can't compare anything other than two distributions. Got {df[x].unique()} for x"
     group1, group2 = sorted(df[x].unique())
 
-    if ax is None:
+    if ax is None or fig is None:
         fig, ax = plt.subplots(figsize=(5,5))
         ax.tick_params(labelsize=12)
     
