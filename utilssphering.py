@@ -1253,7 +1253,7 @@ def download_from_cpg(prefix: str, save_dir: str):
 def plot_images(img_paths: list, crop: tuple = None, x0_y0: tuple = (0, 0), plot_title: str = None, ch_names:dict = None):
     if ch_names is None:
         ch_names = {
-            1: "Nucleus",
+            1: "DNA",
             2: "Endoplasmic reticulum",
             3: "Nucleoli, cytoplasmic RNA",
             4: "Actin, Golgi, plasma membrane",
@@ -1324,3 +1324,43 @@ def plot_two_distributions(
     plt.subplots_adjust( 
                     wspace=0.2,
                     hspace=0.2)
+    
+
+def plot_feature_density(
+        df: pd.DataFrame,
+        x: str,
+        group: str,
+        fig = None,
+        ax = None,
+        xlabel: list = None,
+        ylabel: str = None,
+        plot_title: str = None,
+        ):
+    
+    if fig is None or ax is None:
+        fig, ax = plt.subplots(figsize=(5, 5))
+
+    kde = sns.kdeplot(
+        data=df, 
+        x=x, 
+        hue=group, 
+        ax=ax, 
+        # bw_method=0.2,
+        # bw_method="silverman"
+        # log_scale=[False, True]
+        )
+
+    # Normalize feature groups to between 0-1
+    for line in kde.lines:
+        y = line.get_data()[1]
+        line.set_data(line.get_data()[0], y / y.max())
+
+    ax.set_xlim(-0.099, 1.1)
+    ax.set_ylim(0, 1.1)
+    ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
+    ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
+    if plot_title is not None:
+        ax.set_title(plot_title, fontsize=18)
+    plt.tight_layout()
+    fig.set_facecolor("white")
+    return fig
