@@ -1286,6 +1286,7 @@ def plot_two_distributions(
         xlabel: list = None,
         ylabel: str = None,
         plot_title: str = None,
+        include_pval: bool = False,
         ax = None,
         fig = None
 ):  
@@ -1304,11 +1305,17 @@ def plot_two_distributions(
         left_dist, right_dist, y_max, height_addition = 0, 1, df[y].max() + 0.1, 0.1
 
         _, pval = scipy.stats.ttest_ind(df[df[x]==group1][y].values, df[df[x]==group2][y].values)
+        pval = round(pval, 3)
         print(f"The pvalue is: {pval}")
-        significance = "ns" if pval > 0.05 else pval
+        if include_pval:
+            significance = "ns" if pval > 0.05 else f"pvalue: {pval}"
+            if pval > 0.05:
+                significance = significance + f"\npvalue: {pval}"
+        else:
+            significance = "ns" if pval > 0.05 else f"pvalue: {pval}"
 
         # Give some extra room to the annotation
-        ax.set_ylim(0, y_max*1.2)
+        ax.set_ylim(0, y_max*1.25)
 
         # Draw the annotation
         ax.plot([left_dist, left_dist, right_dist, right_dist], [y_max, y_max+height_addition, y_max+height_addition, y_max], lw=1, c="black")
@@ -1319,11 +1326,13 @@ def plot_two_distributions(
 
     ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
     ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
+    ax.set_title(plot_title if plot_title is not None else None)
     plt.tight_layout()
     fig.set_facecolor("white")
     plt.subplots_adjust( 
                     wspace=0.2,
                     hspace=0.2)
+    return fig
     
 
 def plot_feature_density(
