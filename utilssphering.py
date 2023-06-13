@@ -799,6 +799,10 @@ def safe_literal_eval(node):
     except ValueError:
         return np.nan
 
+def jitter_data(data, magnitude=0.2):
+    noise = np.random.uniform(low=-magnitude, high=magnitude, size=data.shape)
+    return data + noise
+
 def group_plot(
     df, 
     x, 
@@ -813,6 +817,7 @@ def group_plot(
     legend_location=None,
     infer_custom_legend=False,
     s=None,
+    jitter_x=None,
     use_markers=False,
     label=None, 
     alpha=None,
@@ -859,7 +864,7 @@ def group_plot(
             )
         else:
             ax.scatter(
-                group_df.loc[:, x],
+                group_df.loc[:, x] if not jitter_x else jitter_data(group_df.loc[:, x].values, jitter_x),
                 group_df.loc[:, y],
                 color=colour_palette[i], 
                 # We use .iloc[0] here becasue we assume that every group has a len(df) of 1
@@ -870,6 +875,10 @@ def group_plot(
                 s=s
                 # zorder=2
             )
+        if jitter_x:
+            # A solution I hate but it works for the specific case of figure S1C. 
+            # Likely to be a nuisance if jitter is added to any other type of plot
+            ax.set_xticks(np.arange(df.loc[:, x].min(), df.loc[:, x].max() + 1))
         
         if x_lim:
             ax.set_xlim(x_lim)
@@ -1364,7 +1373,7 @@ def plot_feature_density(
         y = line.get_data()[1]
         line.set_data(line.get_data()[0], y / y.max())
 
-    ax.set_xlim(-0.099, 1.1)
+    ax.set_xlim(0, 1)
     ax.set_ylim(0, 1.1)
     ax.set_xlabel(x if not xlabel else xlabel, fontsize=15)
     ax.set_ylabel(y if not ylabel else ylabel, fontsize=15)
