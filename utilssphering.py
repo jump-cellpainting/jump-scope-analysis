@@ -1306,7 +1306,7 @@ def plot_two_distributions(
         fig, ax = plt.subplots(figsize=(5,5))
         ax.tick_params(labelsize=12)
     
-    sns.boxenplot(data=df, x=x, y=y, ax=ax)
+    sns.boxenplot(data=df, x=x, y=y, ax=ax, showfliers=False)
     sns.stripplot(data=df, x=x, y=y, ax=ax, color="black")
 
     if add_stat_annotation:
