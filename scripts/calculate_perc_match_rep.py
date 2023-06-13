@@ -1,6 +1,5 @@
 import pandas as pd
 import utilssphering
-import utils
 import os
 import random
 import numpy as np
@@ -14,7 +13,7 @@ logging.basicConfig(filename="./log")
 random.seed(9000)
 
 # Read new experiment df
-experiment_df = pd.read_csv("output/all-profile-metadata.csv")
+experiment_df = pd.read_csv("checkpoints/all_profile_metadata.csv")
 # Add profile path
 profile_path = "/home/ubuntu/ebs_tmp/jump-scope/profiles"
 
@@ -58,10 +57,10 @@ def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Bat
 
                         if enable_sphering.casefold() == "no" or enable_sphering.casefold() == "both": 
                             sphere_bool = False
-                            plate_df = utils.remove_negcon_empty_wells(load_data)
-                            replicate_corr = list(utils.corr_between_replicates(plate_df, group_by_feature))
-                            null_replicating = list(utils.corr_between_non_replicates(plate_df, n_samples=n_samples, n_replicates=n_replicates, metadata_compound_name=group_by_feature))
-                            prop_95_replicating, value_95_replicating = utils.percent_score(null_replicating, replicate_corr, how='right')
+                            plate_df = utilssphering.remove_negcon_empty_wells(load_data)
+                            replicate_corr = list(utilssphering.corr_between_replicates(plate_df, group_by_feature))
+                            null_replicating = list(utilssphering.corr_between_non_replicates(plate_df, n_samples=n_samples, n_replicates=n_replicates, metadata_compound_name=group_by_feature))
+                            prop_95_replicating, value_95_replicating = utilssphering.percent_score(null_replicating, replicate_corr, how='right')
                             corr_replicating_list.append(pd.DataFrame({'Vendor': a_vendor,
                                                                         batch_col: a_batch,
                                                                         'Assay_Plate_Barcode': a_plate,
@@ -86,10 +85,10 @@ def create_moa_dataframe(experiment_metadata, profile_parent_dir, batch_col="Bat
                         
                         if enable_sphering.casefold() == "no" or enable_sphering.casefold() == "both": 
                             sphere_bool = False
-                            plate_df = utils.remove_negcon_empty_wells(load_data)
-                            matching_corr = list(utils.corr_between_perturbation_pairs(plate_df, 'Metadata_moa', 'Metadata_broad_sample'))
-                            null_matching = list(utils.corr_between_perturbation_non_pairs(plate_df, n_samples=n_samples, metadata_common=metadata_common, metadata_perturbation=metadata_perturbation))
-                            prop_95_matching, value_95_matching = utils.percent_score(null_matching, matching_corr, how='right')
+                            plate_df = utilssphering.remove_negcon_empty_wells(load_data)
+                            matching_corr = list(utilssphering.corr_between_perturbation_pairs(plate_df, 'Metadata_moa', 'Metadata_broad_sample'))
+                            null_matching = list(utilssphering.corr_between_perturbation_non_pairs(plate_df, n_samples=n_samples, metadata_common=metadata_common, metadata_perturbation=metadata_perturbation))
+                            prop_95_matching, value_95_matching = utilssphering.percent_score(null_matching, matching_corr, how='right')
                             corr_matching_list.append(pd.DataFrame({'Vendor': a_vendor,
                                                                     batch_col: a_batch,
                                                                     'Assay_Plate_Barcode': a_plate,
